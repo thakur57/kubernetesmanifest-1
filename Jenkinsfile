@@ -17,11 +17,10 @@ node {
                         //sh "git switch master"
                         sh "cat deployment.yaml"
                         sh "sed -i 's+raj80dockerid/test.*+raj80dockerid/test:${DOCKERTAG}+g' deployment.yaml"
-                        sh "sed -i 's|image: .*|image: "055409771122.dkr.ecr.us-east-1.amazonaws.com/argocd:${DOCKERTAG}"|' deployment.yaml"
                         sh "cat deployment.yaml"
                         sh "git add ."
                         sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
-                        sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/kubernetesmanifest.git HEAD:main"
+                        sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/kubernetesmanifest-1.git HEAD:main"
       }
     }
   }
